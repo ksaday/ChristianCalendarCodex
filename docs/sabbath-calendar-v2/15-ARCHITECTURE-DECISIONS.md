@@ -1,0 +1,14 @@
+# Architecture decisions
+
+All decisions below are **PROPOSED** pending owner approval except the immutable anchor and integer numbering supplied as requirements. Alternatives describe choices available to implementers before release.
+
+| ID | Context and alternatives | Selected approach and rationale | Consequences and risk |
+|---|---|---|---|
+| ADR-01 | Any civil day may be searched. A week could begin or end on Saturday. | Define [S(n),S(n+1)) and expose an exact inverse separately. Saturday labels its own interval, and Euclidean division gives a unique answer on both sides of zero. | UI must label a Friday as offset six, and distinguish it from upcoming observance. Review wording. |
+| ADR-02 | Number is simple but finite in precision; decimal libraries add a dependency. | Native BigInt in pure strict TypeScript modules. Decimal strings at boundaries permit interoperable exact persistence. | Modern runtime required. Reject clients without BigInt with an explicit compatibility message. Interface budgets guard finite memory. |
+| ADR-03 | One universal converter or independent versioned profiles; astronomical calculation or finite publication table. | Pure proleptic civil calendars with fixed Hebrew calculation and HKO-profile offline Chinese conversion in validated windows. Separate coverage and confidence per adapter. | Provider and license reviews required. Empty or disputed coverage cannot be released as verified. |
+| ADR-04 | A month grid or precomputed global scroll canvas cannot represent arbitrary distance affordably. | Keep one BigInt selected D and render a bounded week-first viewport. Present accessible list beside or under graphic. | Coarse scales collapse days into pixels. Direct search and day stepping retain precision. |
+| ADR-05 | Direct extension, shared-code refactor and parallel static route evaluated in [system architecture](09-SYSTEM-ARCHITECTURE.md). | Option C keeps current app runnable while V2 introduces stricter contracts. Reuse verified behaviors, branding and fixture values. | Separate assets and some duplicated rules. Future consolidation depends on parity evidence. |
+| ADR-06 | Historical or religious events can annotate positions; local observance uses time and place. | Keep model provenance, location and sunset independent of the day engine. Default to Mode A. Require separate evidence and explicit approval for each overlay. | Historical labels and observed events may remain unresolved; show evidence limitations without changing D. |
+
+Revisit ADR-03 if a provider cannot satisfy the evidence or licensing gate. Revisit ADR-05 if maintenance of both clients becomes material. Neither review reopens the anchor. Changes to a released calendar profile require a new revision and recorded differences; saved selections retain their JDN. [owner approval checklist](16-OWNER-APPROVAL-CHECKLIST.md) · [requirements traceability](17-REQUIREMENTS-TRACEABILITY.md)

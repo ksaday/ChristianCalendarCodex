@@ -1,0 +1,13 @@
+# Genesis and a possible Creation boundary
+
+Genesis 2:1–3 identifies the seventh day in relation to the six preceding days. It supplies an ordinal and a theological explanation for sanctifying the day. Converting that ordinal into this project's JDN coordinate requires a dated synchronism and an elapsed number of days. The passage supplies neither number. This is a distinction between two questions one might ask of the text.
+
+Genesis 5 and 11 supply ages associated with generations. A calculation using them must choose a textual witness, decide how to handle variants and possible gaps, then connect the result through later chronology to an independently dated event. Masoretic, Samaritan and Septuagint witnesses differ on numerical ages. A cumulative reading can therefore produce different totals even before resolving calendar years, inclusive counting or the season of a proposed starting day. A genealogy read primarily as a literary or theological structure gives still less justification for an exact elapsed-day count. [Comparative manuscript table](https://biblestudydownloads.org/files/eng/os/01J-Suppl5.3-20_Tanner_Manuscript_Data_for_Genesis_5_and_11_Full_Table.pdf) · [Textual analysis of Genesis 5 and 11](https://academic.oup.com/book/32142/chapter-abstract/268103942)
+
+A traditional Hebrew era supplies a convention for numbering years. A Christian chronology assembled from genealogies and later reigns supplies a model with its own synchronisms. Equating the start of an era with an observed Creation Sabbath would require further evidence in either case. Even exact knowledge of a year leaves multiple Saturdays. No independently verifiable Creation Sabbath JDN is established by the materials reviewed.
+
+**Mode A, default.** Every integer index remains selectable. Mathematical extension does not claim humans recorded Sabbaths throughout the entire domain.
+
+**Mode B, optional research overlay.** Require model ID, author, primary texts and editions, synchronism, interval derivation, uncertainties, review date and an owner-approved candidate JDN. Validate (candidate−A) mod 7=0. A noncongruent candidate yields a model conflict. Never round it to the nearest Sabbath. If evidence yields only a range, show a research note without a selectable first-week boundary. When approved, mark selections earlier than the candidate “before this model’s boundary,” keep their canonical numbers accessible, and allow switching to Mode A at the same D.
+
+**Decision.** Defer Mode B from MVP. Later approval authorizes presentation of a named interpretation and may be withdrawn without migrating stored days. See [architecture decisions](15-ARCHITECTURE-DECISIONS.md) and [owner approval checklist](16-OWNER-APPROVAL-CHECKLIST.md).

@@ -1,0 +1,12 @@
+# Owner approval checklist
+
+This document records open choices, recommended defaults and the stage at which the choice matters. The current deliverable is a design package. No implementation approval has been recorded.
+
+1. **Authorize the implementation baseline and route.** Recommend Option C from [system architecture](09-SYSTEM-ARCHITECTURE.md) at the commit in [existing project analysis](02-EXISTING-PROJECT-ANALYSIS.md). Alternatives A and B modify the current application earlier. Approval required before coding.
+2. **Confirm interval and navigation wording.** Recommend Saturday through Friday, offset 0–6, strict Previous/Next Sabbath and inclusive countdown. Alternative is a Sabbath-ending display week; it would require a different containing-cycle contract. Approval required before freezing G1 public interfaces. The anchor and #0 are fixed.
+3. **Confirm calendar profiles and evidence.** Recommend proleptic Gregorian and Julian, fixed Hebrew daytime dates and Hong Kong Chinese dates. Adopt 1901–2100 as a proposed bounded window for both lunisolar rows, conditional on rights and tests. A narrower, accurately qualified interval is an alternative if evidence is incomplete. Approve provider revision, terms, coverage and uncertain labels at G2.
+4. **Confirm timeline behavior and budgets.** Recommend a shared day cursor, Gregorian-based month/year steps, a signed search, five tracks, accessible mobile details and the budgets in [data models and interfaces](10-DATA-MODELS-AND-INTERFACES.md) and [ui ux design](11-UI-UX-DESIGN.md). Alternatives include adapter-specific stepping and wider interactive budgets. Approve after keyboard and deep-jump demonstrations.
+5. **Confirm release evidence and scope.** Recommend static offline assets, legacy parity and gates G1–G3. Review independent evidence lineage, unsupported statuses and the two distinct April 2026 fixtures before release.
+6. **Decide separately on extensions.** Recommend deferring local sunset, Creation models, Chinese historical events, biblical events and calculated/observed eclipse comparison. Future approval must identify a specific provider, source and responsible reviewer. A choice to defer keeps Mode A fully usable.
+
+At each gate record approver, date, accepted ADR IDs, exceptions with scope and the supporting test report. A changed provider, coverage interval or Creation model requires review of the affected decision only. [development roadmap](13-DEVELOPMENT-ROADMAP.md) · [architecture decisions](15-ARCHITECTURE-DECISIONS.md)
