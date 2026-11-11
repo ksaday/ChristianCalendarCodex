@@ -1,6 +1,6 @@
 # Sabbath Calendar V2 · chronology and calendar adapters
 
-V2 implements the integer day engine, selection transport, and Gregorian, Julian, calculated Hebrew, and Hong Kong Chinese adapters. The original calendar is available at [the legacy entry point](../index.html). The [approved design](../docs/sabbath-calendar-v2/00-EXECUTIVE-SUMMARY.md) describes the later calendar adapters and timeline.
+V2 implements the integer day engine, selection transport, and Gregorian, Julian, calculated Hebrew, and Hong Kong Chinese adapters. The original calendar is available at [the legacy entry point](../index.html). The [approved design](../docs/sabbath-calendar-v2/00-EXECUTIVE-SUMMARY.md) describes the calendar conventions and timeline behavior.
 
 ## Open the timeline
 
@@ -19,6 +19,12 @@ npm run test:oracle
 ~~~
 
 The oracle command additionally requires Python 3 and the JavaScriptCore shell. On macOS it detects the system shell. Elsewhere set JSC to its executable path. The oracle generates a temporary module next to the compiled core and runs identical inputs through Node and JavaScriptCore. The library has no runtime dependencies. TypeScript is pinned in the lockfile.
+
+## Package and verify the static release
+
+Run `npm run test:release` from this directory with Python 3, Git and Google Chrome available. Set `CHROME_BIN` to select a compatible browser executable. The test creates `dist/sabbath-calendar-v2.zip`, extracts it to a temporary directory, serves only the extracted files on loopback, and removes the test directory afterward. It checks the legacy assets against the project's baseline Git commit, which must be present in the checkout.
+
+For a build without browser tests, run `npm run package`. Extract the ZIP under a static HTTP server. Open `/v2/` for the timeline and `/` for the original calendar. The archive contains the compiled JavaScript and needs no package installation on the host. Build evidence and remaining owner checks are in the [release verification record](../docs/sabbath-calendar-v2/18-RELEASE-VERIFICATION.md).
 
 ## Try a selection
 

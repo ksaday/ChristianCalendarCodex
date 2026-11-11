@@ -30,9 +30,13 @@ let radius = 1n;
 const scale = () => scaleControl.value as Scale;
 
 function field(name: string, title: string, options?: string[], value = "") {
-  const label = textNode("label", title);
+  const label = document.createElement("label");
+  const caption = textNode("span", title);
+  caption.id = "field-label-" + name;
+  label.append(caption);
   const control = options ? document.createElement("select") : document.createElement("input");
   control.name = name;
+  control.setAttribute("aria-labelledby", caption.id);
   if (control instanceof HTMLSelectElement) {
     for (const option of options!) control.add(new Option(option, option));
   } else {
@@ -93,7 +97,7 @@ function render(announce = true) {
   plot.append(textNode("div", "", "cursor"));
   element("list").replaceChildren();
   for (const [i, row] of representations.entries()) {
-    const track = textNode("div", "", "track");
+    const track = textNode("div", "", i === 0 ? "track sabbath-track" : "track");
     track.setAttribute("aria-hidden", "true");
     const rail = textNode("div", "", "rail");
     for (const [k, day] of ends.entries()) {

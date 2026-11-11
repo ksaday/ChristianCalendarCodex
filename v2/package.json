@@ -6,10 +6,13 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && node --test test/*.test.mjs",
-    "test:oracle": "npm run build && python3 test/oracle.py"
+    "test:oracle": "npm run build && python3 test/oracle.py",
+    "package": "npm run build && python3 tools/package-release.py",
+    "test:release": "npm run package && node tools/verify-release.mjs"
   },
   "devDependencies": {
     "lunar-javascript": "1.7.7",
+    "playwright-core": "1.56.1",
     "typescript": "5.9.3"
   }
 }
