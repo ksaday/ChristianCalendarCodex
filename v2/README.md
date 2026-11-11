@@ -2,6 +2,12 @@
 
 V2 implements the integer day engine, selection transport, and Gregorian, Julian, calculated Hebrew, and Hong Kong Chinese adapters. The original calendar is available at [the legacy entry point](../index.html). The [approved design](../docs/sabbath-calendar-v2/00-EXECUTIVE-SUMMARY.md) describes the later calendar adapters and timeline.
 
+## Open the timeline
+
+From this directory run `npm ci`, `npm run build`, then `python3 -m http.server 8731 --directory ..`. Open [the local timeline](http://127.0.0.1:8731/v2/). The static page loads its compiled ES modules from `v2/dist/`. Serve the repository root to keep the original month-calendar link available.
+
+Search by signed Sabbath number or by a date in any of the four calendars. Choose a scale to change the view around the selected day. Earlier and Later move one unit at that scale. Month, year and century steps follow Gregorian boundaries and clamp to the last day of a short month. Focus the timeline for left/right day steps or Shift+left/right week steps. Conversion details show exact values and each calendar’s coverage.
+
 ## Run the verification
 
 From this directory, with Node 22 or later and npm, run:

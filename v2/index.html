@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sabbath Calendar · Timeline</title><link rel="stylesheet" href="timeline.css"><script type="module" src="dist/app.js"></script></head>
+<body><header><div class="wrap mast"><span class="brand"><b aria-hidden="true">✝</b> Sabbath Calendar</span><a href="../index.html">Month calendar ↗</a></div></header>
+<main class="wrap">
+<section class="summary"><div><p class="kicker">Selected Sabbath cycle</p><h1 id="headline">Sabbath Calendar</h1><p id="subtitle"></p></div>
+<div class="shortcuts"><button id="today">Today</button><button id="anchor">Jump to anchor</button></div></section>
+<form id="search"><label>Find by<select id="mode"><option value="sabbath">Sabbath number</option><option value="gregorian">Gregorian date</option><option value="julian">Julian date</option><option value="hebrew">Hebrew date</option><option value="chinese">Chinese date</option></select></label><div id="fields"></div><button class="primary">Find day →</button></form>
+<p id="error" role="alert"></p>
+<section class="panel" aria-labelledby="plot-title"><div class="plothead"><h2 id="plot-title">Calendar timeline</h2>
+<div class="controls"><label>Scale <select id="scale"><option>day</option><option selected>week</option><option>month</option><option>year</option><option>century</option></select></label><button id="prev" aria-label="Earlier">←</button><button id="next" aria-label="Later">→</button></div></div>
+<div id="plot" tabindex="0" role="group" aria-label="Timeline. Left and right arrow keys move one day. Hold Shift to move one week."></div>
+<div class="foot"><span>◆ Selected day</span><span id="basis"></span></div></section>
+<section class="readout"><div class="readhead"><h2>Selected day</h2><span id="jdn"></span></div><dl id="list"></dl>
+<div class="actions"><button id="before">← Previous Sabbath</button><button id="after">Next Sabbath →</button><button id="details">Conversion details</button></div></section>
+<dialog id="dialog"><h2>Conversion details</h2><div id="metadata"></div><button id="copy">Copy exact JDN</button> <button id="close">Close</button><p id="copied" role="status"></p></dialog>
+<p class="sr" id="announcement" role="status"></p>
+<noscript>Enable JavaScript to explore the timeline.</noscript></main></body></html>
