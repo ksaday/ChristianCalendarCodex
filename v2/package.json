@@ -8,5 +8,8 @@
     "test": "npm run build && node --test test/*.test.mjs",
     "test:oracle": "npm run build && python3 test/oracle.py"
   },
-  "devDependencies": { "typescript": "5.9.3" }
+  "devDependencies": {
+    "lunar-javascript": "1.7.7",
+    "typescript": "5.9.3"
+  }
 }

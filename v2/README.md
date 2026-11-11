@@ -1,6 +1,6 @@
 # Sabbath Calendar V2 · chronology and calendar adapters
 
-V2 implements the integer day engine, selection transport, and Gregorian, Julian, and calculated Hebrew adapters. The original calendar is available at [the legacy entry point](../index.html). The [approved design](../docs/sabbath-calendar-v2/00-EXECUTIVE-SUMMARY.md) describes the later calendar adapters and timeline.
+V2 implements the integer day engine, selection transport, and Gregorian, Julian, calculated Hebrew, and Hong Kong Chinese adapters. The original calendar is available at [the legacy entry point](../index.html). The [approved design](../docs/sabbath-calendar-v2/00-EXECUTIVE-SUMMARY.md) describes the later calendar adapters and timeline.
 
 ## Run the verification
 
@@ -60,4 +60,17 @@ The in-repository provider (revision 1) computes mean conjunctions, applies post
 
 The Hebrew suite compared all 73,049 covered days to Node ICU 78.3 in UTC and converted each expected label back to the same JDN. Published sample dates cover [30 Adar I](https://www.chabad.org/calendar/view/day.asp?hdate=12%2F30%2F5784&mode=j), [the next month's first day](https://he.chabad.org/calendar/view/month.asp?hdate=13%2F1%2F5784&mode=j), [Rosh Hashanah](https://www.chabad.org/calendar/view/day.asp?hdate=7%2F1%2F5785&mode=j), and [the 2026 anniversary](https://www.hebcal.com/converter?g2h=1&gd=4&gm=4&gy=2026). The Rosh Hashanah fixture is also the alignment point. The tests exercise the calculated convention; local sunset observance is a later layer.
 
-The next calendar milestone is the bounded Chinese lunisolar representation.
+## Hong Kong Chinese lunisolar calendar
+
+Import `chinese` from `./dist/chinese.js`. The inclusive range is Gregorian 1901-01-01 through 2100-12-31. Year identifies the Gregorian year of lunar new year. A leap month repeats its preceding month number, so inverse conversion requires an explicit boolean.
+
+~~~js
+chinese.toDay({ year: 2023n, month: 2, isLeapMonth: true, day: 1 }); // Gregorian March 22
+chinese.fromDay(2415386n).value; // { year: 1900n, month: 11, isLeapMonth: false, day: 11 }
+~~~
+
+A compact offline month index is generated with pinned MIT-licensed lunar-javascript 1.7.7. The generator adjusts the start of lunar month nine in 2057 to September 28 for the Hong Kong convention. The published tables were used for verification. The runtime contains the calculated index and requires no network or astronomy library. Regenerate it with `node tools/generate-chinese.mjs`. [Calculation package](https://github.com/6tail/lunar-javascript) · [HKO published tables and near-midnight exceptions](https://www.hko.gov.hk/en/gts/time/conversion.htm)
+
+Both conversion directions return an uncertain result with the published value for months beginning at HKO’s three flagged new moons and on the immediately preceding civil day. The four flagged solar terms carry an informational note on their published date. Consumers should present these qualifications with the returned label. Dates outside coverage return unsupported, including the excluded portions of the endpoint lunar years.
+
+**Verification.** Every one of the 73,049 published civil dates was compared field-by-field and converted back to its JDN. The offline test pins the SHA-256 of all canonical daily tuples. To repeat the direct comparison, save the 200 English HKO text tables as 1901.txt through 2100.txt in one directory, build, then run `node tools/check-hko.mjs /path/to/tables`. The checker also rejects missing or repeated civil days. Independent US Naval Observatory event times locate the March 2023 equinox on March 21 in Hong Kong, the next new moon on March 22 (leap month two), and the following new moon on April 20. These fixtures check selected astronomical boundaries. [HKO text file example](https://www.hko.gov.hk/en/gts/time/calendar/text/files/T2023e.txt) · [USNO lunar phases](https://aa.usno.navy.mil/calculated/moon/phases?date=2023-03-07&format=p&nump=50&submit=Get+Data) · [USNO equinox](https://aa.usno.navy.mil/calculated/seasons?dst=false&tz=0&year=2023)
